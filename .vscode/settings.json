@@ -1,0 +1,21 @@
+{
+  "emeraldwalk.runonsave": {
+    "showElapsed": true,
+    "autoClearConsole": true,
+    "commands": [
+      {
+        "match": "(.latexmkrc|docker-compose.yml|local.Dockerfile)$",
+        "cmd": "docker compose build"
+      },
+      {
+        "match": "\\.tex$",
+        "cmd": "docker compose run --rm latex sh -c 'latexmk -pdf -outdir=out ${relativeFile} && latexmk -c -outdir=out ${relativeFile} '"
+      }
+    ]
+  },
+    // LaTeX Workshopの自動コンパイルを完全にオフにする（競合を防ぐため）
+    "latex-workshop.latex.autoBuild.run": "never",
+
+    // chktex（構文チェッカー）を完全に無効化する
+    "latex-workshop.chktex.enabled": false
+}

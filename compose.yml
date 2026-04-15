@@ -1,0 +1,10 @@
+services:
+  latex:
+    build:
+      context: .
+      dockerfile: local.Dockerfile
+    volumes:
+      - .:/workdir
+    working_dir: /workdir
+    # コンテナ起動時に引数なしで latexmk を実行する
+    command: latexmk
